@@ -31,8 +31,7 @@
         android:id="@+id/badLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:t"Area is Unstable"
-        le" />
+        android:text="Area is Unstable"/>
 
     <Button
         android:id="@+id/submit"
