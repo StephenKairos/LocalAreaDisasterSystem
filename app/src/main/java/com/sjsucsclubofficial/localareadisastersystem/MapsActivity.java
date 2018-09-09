@@ -51,10 +51,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     // contacts-related task you need to do.
                     if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
-                        Log.e("Testing Permissions", "You're a fucking genius");
+                        Log.e("Testing Permissions", "You're a genius");
                         mMap.setMyLocationEnabled(true);
                     } else {
-                        Log.e("Testing Permissions", "You're a fucking idiot");
+                        Log.e("Testing Permissions", "You're an idiot");
                     }
                 } else {
                     // permission denied, boo! Disable the

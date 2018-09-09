@@ -3,6 +3,7 @@ package com.sjsucsclubofficial.localareadisastersystem;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -33,7 +34,7 @@ public class StarterActivity extends AppCompatActivity {
             }
         });
 
-        locationSafe= (Switch) findViewById(R.id.badLocation);
+        locationSafe = (Switch) findViewById(R.id.badLocation);
         locationSafe.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -41,11 +42,15 @@ public class StarterActivity extends AppCompatActivity {
             }
         });
 
-        numOfStable= (EditText) findViewById(R.id.stable);
+        numOfStable = (EditText) findViewById(R.id.stable);
         numOfStable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stable=Integer.parseInt(numOfStable.getText().toString());
+                try {
+                    stable = Integer.parseInt(numOfStable.getText().toString());
+                } catch (NumberFormatException e) {
+                    Log.e("TODO: Fix Error", "Need to set placeholder to number: " + e);
+                }
             }
         });
 
@@ -53,7 +58,11 @@ public class StarterActivity extends AppCompatActivity {
         numOfInjured.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                injured=Integer.parseInt(numOfInjured.getText().toString());
+                try {
+                    injured=Integer.parseInt(numOfInjured.getText().toString());
+                } catch (NumberFormatException e) {
+                    Log.e("TODO: Fix Error", "Need to set placeholder to number: " + e);
+                }
             }
         });
 
@@ -62,18 +71,11 @@ public class StarterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //(Doshit.exe)
-
-
+                //(DoThings.exe)
 
                 Intent start=new Intent(StarterActivity.this,MapsActivity.class);
                 startActivity(start);
-
             }
         });
-
-
     }
-
-
 }
