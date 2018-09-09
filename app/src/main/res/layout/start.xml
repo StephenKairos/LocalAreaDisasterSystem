@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Switch
+        android:id="@+id/hasMobility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:switchMinWidth="50dp"
+        android:switchPadding="20dp"
+        android:text="Can Move" />
+
+    <EditText
+        android:id="@+id/stable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="Number of Stable members" />
+
+    <EditText
+        android:id="@+id/critical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="Number of Critically injured members" />
+
+    <Switch
+        android:id="@+id/badLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:t"Area is Unstable"
+        le" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+</LinearLayout>

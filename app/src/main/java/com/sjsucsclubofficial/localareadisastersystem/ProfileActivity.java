@@ -251,4 +251,6 @@ public class ProfileActivity extends AppCompatPreferenceActivity {
             return super.onOptionsItemSelected(item);
         }
     }
+
+
 }
