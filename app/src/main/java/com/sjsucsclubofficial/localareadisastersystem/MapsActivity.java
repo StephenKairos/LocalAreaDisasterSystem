@@ -119,14 +119,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             showAlert();
         }
 
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            double longitude = location.getLongitude();
+            double latitude = location.getLatitude();
 
-        // Add a marker in Current Location and move the camera
-        LatLng currentLocation = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(currentLocation).title("Some Location"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+            // Add a marker in Current Location and move the camera
+            LatLng currentLocation = new LatLng(latitude, longitude);
+            mMap.addMarker(new MarkerOptions().position(currentLocation).title("Some Location"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+        } else {
+            // Show rationale and request permission.
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_REQUEST_FINE_LOCATION);
+        }
     }
 
     @Override

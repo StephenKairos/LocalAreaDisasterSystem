@@ -86,6 +86,13 @@ public class StarterActivity extends AppCompatActivity {
 
                 //(DoThings.exe)
 
+                if(wifiManager.isWifiEnabled()){
+                    wifiManager.setWifiEnabled(false);
+                }
+                else {
+                    wifiManager.setWifiEnabled(true);
+                }
+
                 Intent start=new Intent(StarterActivity.this,MapsActivity.class);
                 startActivity(start);
             }
@@ -102,18 +109,5 @@ public class StarterActivity extends AppCompatActivity {
         intentFilter.addAction(WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION);
         intentFilter.addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION);
         intentFilter.addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
-        
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(wifiManager.isWifiEnabled()){
-                    wifiManager.setWifiEnabled(false);
-                }
-                else {
-                    wifiManager.setWifiEnabled(true);
-                }
-
-            }
-        });
     }
 }
