@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -125,9 +126,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             double longitude = location.getLongitude();
             double latitude = location.getLatitude();
 
+            // Make Mock Map Pins (HARD CODED)
+            LatLng mock1 = new LatLng(latitude - 0.0001, longitude - 0.0001);
+            LatLng mock2 = new LatLng(latitude + 0.0002, longitude + 0.0001);
+            LatLng mock3 = new LatLng(latitude - 0.0001, longitude + 0.0003);
+            LatLng mock4 = new LatLng(latitude - 0.0004, longitude + 0.0003);
+
+            mMap.addMarker(new MarkerOptions().position(mock1).title("mock1"));
+            mMap.addMarker(new MarkerOptions().position(mock2).title("mock2").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+            mMap.addMarker(new MarkerOptions().position(mock3).title("mock3"));
+            mMap.addMarker(new MarkerOptions().position(mock4).title("mock4").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+
             // Add a marker in Current Location and move the camera
             LatLng currentLocation = new LatLng(latitude, longitude);
-            mMap.addMarker(new MarkerOptions().position(currentLocation).title("Some Location"));
+            mMap.addMarker(new MarkerOptions().position(currentLocation).title("Some Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
         } else {
             // Show rationale and request permission.
