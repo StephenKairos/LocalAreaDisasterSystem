@@ -1,12 +1,19 @@
 package com.sjsucsclubofficial.localareadisastersystem;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.wifi.p2p.WifiP2pManager;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.view.View;
+
+import com.sjsucsclubofficial.localareadisastersystem.WifiD.WifiDBReceiver;
 
 public class StarterActivity extends AppCompatActivity {
 
@@ -19,6 +26,12 @@ public class StarterActivity extends AppCompatActivity {
     private boolean safe;
     private int stable;
     private int injured;
+    WifiManager wifiManager;
+    WifiP2pManager wifiP2pManager;
+    WifiP2pManager.Channel wifiChannel;
+    BroadcastReceiver wifiReceiver;
+    IntentFilter intentFilter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +81,36 @@ public class StarterActivity extends AppCompatActivity {
 
                 Intent start=new Intent(StarterActivity.this,MapsActivity.class);
                 startActivity(start);
+
+            }
+        });
+
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        wifiP2pManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
+        wifiChannel = wifiP2pManager.initialize(this, getMainLooper(), null);
+        wifiReceiver = new WifiDBReceiver(wifiP2pManager,wifiChannel, this);
+
+        intentFilter = new IntentFilter();
+
+        intentFilter.addAction(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION);
+        intentFilter.addAction(WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION);
+        intentFilter.addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION);
+        intentFilter.addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
+
+
+
+
+
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(wifiManager.isWifiEnabled()){
+                    wifiManager.setWifiEnabled(false);
+                }
+                else {
+                    wifiManager.setWifiEnabled(true);
+                }
 
             }
         });
