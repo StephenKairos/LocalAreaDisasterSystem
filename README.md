@@ -5,6 +5,6 @@ This app is designed to locate nearby users with Wifi-Direct, and gather data on
 
 The information on the blockchain will be used to inform emergency workers of nearby survivors and increase response time.
 
-Currently this app is a mockup and proof of concept. We're planned to implement the rest of the features between now and the submission deadline at September 28th. Currently the rest of the team is working on another project for one of the Hackathon sponsors.
+Currently this app is a mockup and proof of concept. We had planned to implement the rest of the features between now and the submission deadline at September 28th. Currently the rest of the team is working on another project for one of the Hackathon sponsors.
 
 Our idea is very similar to that of [Piconets](https://en.wikipedia.org/wiki/Piconet) and [Scatternets](https://en.wikipedia.org/wiki/Scatternet).
